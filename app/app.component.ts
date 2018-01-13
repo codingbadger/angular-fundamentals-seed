@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="app">
       <passenger-dashboard></passenger-dashboard>
+      
     </div>
 
 

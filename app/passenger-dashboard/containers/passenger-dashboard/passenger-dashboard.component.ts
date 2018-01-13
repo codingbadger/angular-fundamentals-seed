@@ -2,37 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { Passenger } from '../../models/passenger.interface';
 
 @Component({
-    selector: 'passenger-dashboard',
-    styleUrls: ['passenger-dashboard.component.scss'],
-    template: `
+  selector: 'passenger-dashboard',
+  styleUrls: ['passenger-dashboard.component.scss'],
+  template: `
 <div>
-    <h3> Airline Passengers </h3>
 
-    <ul>
-      <li *ngFor="let passenger of passengers; let i = index;">
-        <span class="status"
-        [class.checked-in]="passenger.checkedIn"
-        ></span>
-        {{i}} : {{passenger.fullName}}
-        <p>{{ passenger | json}}</p>
-        <div class="date">
-          Check in date: 
-          {{ passenger.checkInDate ? (passenger.checkInDate | date: 'yMMMMd' | uppercase) : 'Not checked in' }}
-        </div>
-        <div class="children">
-          Children : {{ (passenger.children?.length) }}
-        </div>
-      </li>
-    </ul>
+  <passenger-count
+    [items]="passengers"
+      >
+  </passenger-count>
+  <passenger-detail
+    *ngFor="let passenger of passengers;"
+    [detail]="passenger">
+   </passenger-detail>
 </div>
     `
-     
+
 })
 
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
   ngOnInit(): void {
-  console.log('ngOnit');
+
     this.passengers = [{
       id: 1,
       fullName: 'Stephen',
@@ -45,7 +36,7 @@ export class PassengerDashboardComponent implements OnInit {
       fullName: 'Rose',
       checkedIn: false,
       checkInDate: null,
-      children: [{ name: 'Ted', age: 12}, {name: 'Chloe', age: 7}]
+      children: [{ name: 'Ted', age: 12 }, { name: 'Chloe', age: 7 }]
     },
     {
       id: 3,
@@ -59,7 +50,7 @@ export class PassengerDashboardComponent implements OnInit {
       fullName: 'Louise',
       checkedIn: true,
       checkInDate: 14884128000000,
-      children: [{name:'Jessica', age: 1}]
+      children: [{ name: 'Jessica', age: 1 }]
     },
     {
       id: 5,
@@ -68,12 +59,12 @@ export class PassengerDashboardComponent implements OnInit {
       checkInDate: null,
       children: null
     },
-  
+
     ]
-  
+
   }
 
-    
+
 
 }
 
