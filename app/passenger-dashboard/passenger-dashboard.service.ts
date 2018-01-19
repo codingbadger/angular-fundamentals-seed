@@ -20,6 +20,13 @@ export class PassengerDashboardService {
               .catch((error: any) => Observable.throw(error.json()));
       
     }
+    getPassenger(id: number) : Observable<Passenger> {
+      return this.http
+            .get(`${PASSENGER_API}/${id}`)
+            .map((response: Response) => response.json())
+            .catch((error: any) => Observable.throw(error.json()));
+    
+  }
 
     updatePassenger(passenger: Passenger) : Observable<Passenger> {
 
